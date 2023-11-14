@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
-    static class Menu {
+    static class Order {
         private String food;
         private int quantity;
 
-        public Menu(String food, int quantity) {
+        public Order(String food, int quantity) {
             this.food = food;
             this.quantity = quantity;
         }
@@ -23,6 +23,11 @@ public class Application {
             return quantity;
         }
     }
+
+    public enum Menu {
+
+    }
+
     public static void main(String[] args) {
         final int month = 12;
 
@@ -42,16 +47,18 @@ public class Application {
         System.out.println(month + "월 " + visitDate + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
 
         // TODO: 주문 메뉴 계산 및 출력
-        List<String> menus = Arrays.asList(menuStr.split(","));
-        List<Menu> menuList = menus.stream()
-                .map(menu -> menu.split("-"))
-                .map(m -> new Menu(m[0], Integer.parseInt(m[1])))
+        List<String> orders = Arrays.asList(menuStr.split(","));
+        List<Order> orderList = orders.stream()
+                .map(order -> order.split("-"))
+                .map(o -> new Order(o[0], Integer.parseInt(o[1])))
                 .collect(Collectors.toList());
 
         System.out.println("<주문 메뉴>");
-        menuList.forEach(menu -> System.out.println(menu.getFood() + " " + menu.getQuantity() + "개"));
+        orderList.forEach(order -> System.out.println(order.getFood() + " " + order.getQuantity() + "개"));
 
         // TODO: 할인 전 총주문 금액 계산 및 출력
+
+        System.out.println("<할인 전 총주문 금액>");
 
         // TODO: 증정 메뉴 계산 및 출력
 
