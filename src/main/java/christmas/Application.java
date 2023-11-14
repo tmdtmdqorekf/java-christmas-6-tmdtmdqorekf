@@ -115,7 +115,13 @@ public class Application {
         }
 
         System.out.println("\n<증정 메뉴>");
-        System.out.println("샴페인 " + champaignCount + "개");
+
+        if (champaignCount == 0) {
+            System.out.println("없음");
+        }
+        else {
+            System.out.println("샴페인 " + champaignCount + "개");
+        }
 
         // TODO: 혜택 내역 계산 및 출력
 
