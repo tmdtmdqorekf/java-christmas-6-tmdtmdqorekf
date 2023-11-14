@@ -6,7 +6,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Application {
     static class Order {
@@ -88,15 +87,6 @@ public class Application {
         return null;
     }
 
-    private static Week getStarDay(boolean isStar) {
-        for (Week day : Week.values()) {
-            if (day.isStarDay == isStar) {
-                return day;
-            }
-        }
-        return null;
-    }
-
     public static void main(String[] args) {
         final int month = 12;
 
@@ -120,7 +110,7 @@ public class Application {
         List<Order> orderList = orders.stream()
                 .map(order -> order.split("-"))
                 .map(o -> new Order(o[0], Integer.parseInt(o[1])))
-                .collect(Collectors.toList());
+                .toList();
 
         System.out.println("\n<주문 메뉴>");
         orderList.forEach(order -> System.out.println(order.getFood() + " " + order.getQuantity() + "개"));
@@ -129,7 +119,7 @@ public class Application {
         int userOrderPrice = 0;
         int eachPrice = 0;
 
-        for (int i = 0; i<orderList.size(); i++) {
+        for (int i = 0; i < orderList.size(); i++) {
             Menu userOrder = getMenu(orderList.get(i).getFood());
             eachPrice = (userOrder.price * orderList.get(i).getQuantity());
             userOrderPrice += eachPrice;
@@ -149,10 +139,8 @@ public class Application {
         if (userOrderPrice >= 120000) {
             System.out.println("샴페인 1개");
             champaignDiscount = 25000;
-            userOrderPrice -= champaignDiscount;
             hasChampaignDiscount = true;
-        }
-        else {
+        } else {
             System.out.println("없음");
         }
 
@@ -166,6 +154,7 @@ public class Application {
                 christmasDiscount += 100;
                 hasChristmasDiscount = true;
             }
+            userOrderPrice -= christmasDiscount;
         }
 
         // 평일 할인 (일~목) -> 디저트 2023원 할인
@@ -212,7 +201,7 @@ public class Application {
             userOrderPrice -= starDiscount;
             hasStarDiscount = true;
         }
-        else if (visitDate == 25) {
+        if (visitDate == 25) {
             starDiscount = 1000;
             userOrderPrice -= starDiscount;
             hasStarDiscount = true;
@@ -241,7 +230,8 @@ public class Application {
             System.out.println("증정 이벤트: " + numberFormat.format(-champaignDiscount) + "원");
             totalDiscount += champaignDiscount;
         }
-        if (!hasChristmasDiscount && !hasWeekdayDiscount && !hasWeekendDiscount && !hasStarDiscount && !hasChampaignDiscount) {
+        if (!hasChristmasDiscount && !hasWeekdayDiscount && !hasWeekendDiscount && !hasStarDiscount
+                && !hasChampaignDiscount) {
             System.out.println("없음");
         }
 
@@ -250,7 +240,10 @@ public class Application {
         System.out.println(numberFormat.format(-totalDiscount) + "원");
 
         // TODO: 할인 후 예상 결제 금액 계산 및 출력
+        System.out.println("\n<할인 후 예상 결제 금액>");
+        System.out.println(numberFormat.format(userOrderPrice) + "원");
 
         // TODO: 12월 이벤트 배지 계산 및 출력
+
     }
 }
