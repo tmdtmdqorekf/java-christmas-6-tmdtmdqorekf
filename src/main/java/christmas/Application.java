@@ -87,12 +87,12 @@ public class Application {
 
         // TODO: 할인 전 총주문 금액 계산 및 출력
         int userOrderPrice = 0;
-
-        Menu userOrder;
+        int eachPrice = 0;
 
         for (int i = 0; i<orderList.size(); i++) {
-            userOrder = getMenu(orderList.get(i).getFood());
-            userOrderPrice += userOrder.price;
+            Menu userOrder = getMenu(orderList.get(i).getFood());
+            eachPrice = (userOrder.price * orderList.get(i).getQuantity());
+            userOrderPrice += eachPrice;
         }
 
         NumberFormat numberFormat = NumberFormat.getInstance();
@@ -117,6 +117,8 @@ public class Application {
         for (int i = 1; i < visitDate; i++) {
             christmasDiscount += 100;
         }
+
+        String userOrderType;
 
         // 평일 할인 (일~목) -> 디저트 2023원 할인
 
