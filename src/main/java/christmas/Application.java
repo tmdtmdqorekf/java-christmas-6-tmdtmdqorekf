@@ -1,8 +1,11 @@
 package christmas;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 우테코 식당 소개 출력
+        System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
 
         // TODO: 예상 방문 날짜 입력 받기
 
