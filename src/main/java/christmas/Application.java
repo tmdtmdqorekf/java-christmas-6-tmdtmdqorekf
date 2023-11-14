@@ -141,13 +141,19 @@ public class Application {
         // 크리스마스 디데이 할인 -> 1000원 시작, 25일까지 100원 증가
         int christmasDiscount = 1000;
 
-        for (int i = 1; i < visitDate; i++) {
-            christmasDiscount += 100;
+        if (visitDate <= 25) {
+            for (int i = 1; i < visitDate; i++) {
+                christmasDiscount += 100;
+            }
+        }
+        else if (visitDate > 25) {
+            for (int i = 1; i < 25; i++) {
+                christmasDiscount += 100;
+            }
         }
 
-        String userOrderType;
-
         // 평일 할인 (일~목) -> 디저트 2023원 할인
+        String userOrderType;
 
         for (int i = 0; i<orderList.size(); i++) {
             Menu userOrder = getMenu(orderList.get(i).getFood());
