@@ -99,6 +99,23 @@ public class Application {
         System.out.println(numberFormat.format(userOrderPrice) + "원");
 
         // TODO: 증정 메뉴 계산 및 출력
+        int champaignCount = 0;
+
+        if (userOrderPrice >= 120000) {
+            champaignCount++;
+        }
+        else if (userOrderPrice >= 240000) {
+            champaignCount++;
+        }
+        else if (userOrderPrice >= 360000) {
+            champaignCount++;
+        }
+        else if (userOrderPrice >= 480000) {
+            champaignCount++;
+        }
+
+        System.out.println("\n<증정 메뉴>");
+        System.out.println("샴페인 " + champaignCount + "개");
 
         // TODO: 혜택 내역 계산 및 출력
 
