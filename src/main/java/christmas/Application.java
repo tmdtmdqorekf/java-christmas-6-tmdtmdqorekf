@@ -244,6 +244,18 @@ public class Application {
         System.out.println(numberFormat.format(userOrderPrice) + "원");
 
         // TODO: 12월 이벤트 배지 계산 및 출력
-
+        System.out.println("\n<12월 이벤트 배지>");
+        if (totalDiscount >= 5000) {
+            System.out.println("별");
+        }
+        else if (totalDiscount >= 10000) {
+            System.out.println("트리");
+        }
+        else if (totalDiscount >= 20000) {
+            System.out.println("산타");
+        }
+        else {
+            System.out.println("없음");
+        }
     }
 }
