@@ -57,6 +57,33 @@ public class Application {
         return null;
     }
 
+    public enum Week {
+        일요일("평일", true),
+        월요일("평일", false),
+        화요일("평일", false),
+        수요일("평일", false),
+        목요일("평일", false),
+        금요일("주말", false),
+        토요일("주말", false);
+
+        private final String weekdayOrWeekend;
+        private final boolean starDay;
+
+        Week(String weekdayOrWeekend, boolean starDay) {
+            this.weekdayOrWeekend = weekdayOrWeekend;
+            this.starDay = starDay;
+        }
+    }
+
+    private static Week getWeek(boolean isStar) {
+        for (Week week : Week.values()) {
+            if (week.starDay == isStar) {
+                return week;
+            }
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         final int month = 12;
 
@@ -121,6 +148,11 @@ public class Application {
         String userOrderType;
 
         // 평일 할인 (일~목) -> 디저트 2023원 할인
+
+        for (int i = 0; i<orderList.size(); i++) {
+            Menu userOrder = getMenu(orderList.get(i).getFood());
+            userOrderType = userOrder.type;
+        }
 
         // 주말 할인 (금,토) -> 메인 2023원 할인
 
