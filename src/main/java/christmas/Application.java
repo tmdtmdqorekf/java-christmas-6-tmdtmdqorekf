@@ -2,6 +2,8 @@ package christmas;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.text.NumberFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,28 +60,28 @@ public class Application {
     }
 
     public enum Week {
-        일요일(1, "평일", true),
-        월요일(2, "평일", false),
-        화요일(3, "평일", false),
-        수요일(4, "평일", false),
-        목요일(5, "평일", false),
-        금요일(6, "주말", false),
-        토요일(7, "주말", false);
+        일("SUNDAY", "평일", true),
+        월("MONDAY", "평일", false),
+        화("TUESDAY", "평일", false),
+        수("WEDNESDAY", "평일", false),
+        목("THURSDAY", "평일", false),
+        금("FRIDAY", "주말", false),
+        토("SATURDAY", "주말", false);
 
-        private final int weekNum;
+        private final String weekName;
         private final String weekdayOrWeekend;
         private final boolean starDay;
 
-        Week(int weekNum, String weekdayOrWeekend, boolean starDay) {
-            this.weekNum = weekNum;
+        Week(String weekName, String weekdayOrWeekend, boolean starDay) {
+            this.weekName = weekName;
             this.weekdayOrWeekend = weekdayOrWeekend;
             this.starDay = starDay;
         }
     }
 
-    private static Week getWeekdayOrWeekend(String week) {
+    private static Week getWeekdayOrWeekend(String dayOfWeek) {
         for (Week day : Week.values()) {
-            if (day.weekdayOrWeekend.equals(week)) {
+            if (day.weekName.equals(dayOfWeek)) {
                 return day;
             }
         }
@@ -161,10 +163,23 @@ public class Application {
         }
 
         // 평일 할인 (일~목) -> 디저트 2023원 할인
+        LocalDate date = LocalDate.of(2023, month, visitDate);
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
 
-        for (int i = 0; i<orderList.size(); i++) {
-            Menu userOrder = getMenu(orderList.get(i).getFood());
-            userOrderType = userOrder.type;
+        Week weekdayOrWeekend = getWeekdayOrWeekend(dayOfWeek.name());
+
+        int weekdayDiscount = 0;
+        boolean hasWeekdayDiscount = false;
+
+        if (weekdayOrWeekend.weekdayOrWeekend.equals("평일")) {
+            for (Order order : orderList) {
+                Menu userOrder = getMenu(order.getFood());
+                if ("디저트".equals(userOrder.type)) {
+                    weekdayDiscount = 2023 * order.getQuantity();
+                    userOrderPrice -= weekdayDiscount;
+                    hasWeekdayDiscount = true;
+                }
+            }
         }
 
         // 주말 할인 (금,토) -> 메인 2023원 할인
@@ -175,7 +190,9 @@ public class Application {
         if (hasChristmasDiscount == true) {
             System.out.println("크리스마스 디데이 할인: -" + numberFormat.format(christmasDiscount) + "원");
         }
-        System.out.println("평일 할인: -");
+        if (hasWeekdayDiscount == true) {
+            System.out.println("평일 할인: -" + numberFormat.format(weekdayDiscount) + "원");
+        }
         System.out.println("주말 할인: -");
         System.out.println("증정 이벤트: ");
 
