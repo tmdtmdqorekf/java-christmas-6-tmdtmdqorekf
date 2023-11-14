@@ -149,6 +149,7 @@ public class Application {
         if (userOrderPrice >= 120000) {
             System.out.println("샴페인 1개");
             champaignDiscount = 25000;
+            userOrderPrice -= champaignDiscount;
             hasChampaignDiscount = true;
         }
         else {
@@ -208,12 +209,12 @@ public class Application {
 
         if (weekdayOrWeekend.isStarDay) {
             starDiscount = 1000;
-            userOrderPrice -= 1000;
+            userOrderPrice -= starDiscount;
             hasStarDiscount = true;
         }
         else if (visitDate == 25) {
             starDiscount = 1000;
-            userOrderPrice -= 1000;
+            userOrderPrice -= starDiscount;
             hasStarDiscount = true;
         }
 
@@ -221,17 +222,20 @@ public class Application {
         if (hasChristmasDiscount) {
             System.out.println("크리스마스 디데이 할인: -" + numberFormat.format(christmasDiscount) + "원");
         }
-        if (hasWeekdayDiscount) {
+        else if (hasWeekdayDiscount) {
             System.out.println("평일 할인: -" + numberFormat.format(weekdayDiscount) + "원");
         }
-        if (hasWeekendDiscount) {
+        else if (hasWeekendDiscount) {
             System.out.println("주말 할인: -" + numberFormat.format(weekendDiscount) + "원");
         }
-        if (hasStarDiscount) {
+        else if (hasStarDiscount) {
             System.out.println("특별 할인: -" + numberFormat.format(starDiscount) + "원");
         }
-        if (hasChampaignDiscount) {
+        else if (hasChampaignDiscount) {
             System.out.println("증정 이벤트: -" + numberFormat.format(champaignDiscount) + "원");
+        }
+        else {
+            System.out.println("없음");
         }
 
         // TODO: 총혜택 금액 계산 및 출력
