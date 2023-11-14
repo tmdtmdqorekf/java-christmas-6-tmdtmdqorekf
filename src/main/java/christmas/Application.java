@@ -183,6 +183,19 @@ public class Application {
         }
 
         // 주말 할인 (금,토) -> 메인 2023원 할인
+        int weekendDiscount = 0;
+        boolean hasWeekendDiscount = false;
+
+        if (weekdayOrWeekend.weekdayOrWeekend.equals("주말")) {
+            for (Order order : orderList) {
+                Menu userOrder = getMenu(order.getFood());
+                if ("메인".equals(userOrder.type)) {
+                    weekendDiscount = 2023 * order.getQuantity();
+                    userOrderPrice -= weekendDiscount;
+                    hasWeekendDiscount = true;
+                }
+            }
+        }
 
         // 특별 할인 (일, 25) -> 총주문에서 1000원 할인
 
@@ -193,7 +206,9 @@ public class Application {
         if (hasWeekdayDiscount == true) {
             System.out.println("평일 할인: -" + numberFormat.format(weekdayDiscount) + "원");
         }
-        System.out.println("주말 할인: -");
+        if (hasWeekendDiscount == true) {
+            System.out.println("주말 할인: -" + numberFormat.format(weekendDiscount) + "원");
+        }
         System.out.println("증정 이벤트: ");
 
         // TODO: 총혜택 금액 계산 및 출력
