@@ -1,6 +1,7 @@
 package christmas;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +26,35 @@ public class Application {
     }
 
     public enum Menu {
+        양송이수프("애피타이저", 6_000),
+        타파스("애피타이저", 5_500),
+        시저샐러드("애피타이저", 8_000),
+        티본스테이크("메인", 55_000),
+        바비큐립("메인", 54_000),
+        해산물파스타("메인", 35_000),
+        크리스마스파스타("메인", 25_000),
+        초코케이크("디저트", 15_000),
+        아이스크림("디저트", 5_000),
+        제로콜라("음료", 3_000),
+        레드와인("음료", 60_000),
+        샴페인("음료", 25_000);
 
+        private final String type;
+        private final int price;
+
+        Menu(String type, int price) {
+            this.type = type;
+            this.price = price;
+        }
+    }
+
+    private static Menu getMenu(String menuName) {
+        for (Menu menu : Menu.values()) {
+            if (menu.name().equals(menuName)) {
+                return menu;
+            }
+        }
+        return null;
     }
 
     public static void main(String[] args) {
@@ -53,12 +82,21 @@ public class Application {
                 .map(o -> new Order(o[0], Integer.parseInt(o[1])))
                 .collect(Collectors.toList());
 
-        System.out.println("<주문 메뉴>");
+        System.out.println("\n<주문 메뉴>");
         orderList.forEach(order -> System.out.println(order.getFood() + " " + order.getQuantity() + "개"));
 
         // TODO: 할인 전 총주문 금액 계산 및 출력
+        int userOrderPrice = 0;
 
-        System.out.println("<할인 전 총주문 금액>");
+        for (int i = 0; i<orderList.size(); i++) {
+            Menu userOrder = getMenu(orderList.get(i).getFood());
+            userOrderPrice += userOrder.price;
+        }
+
+        NumberFormat numberFormat = NumberFormat.getInstance();
+
+        System.out.println("\n<할인 전 총주문 금액>");
+        System.out.println(numberFormat.format(userOrderPrice) + "원");
 
         // TODO: 증정 메뉴 계산 및 출력
 
