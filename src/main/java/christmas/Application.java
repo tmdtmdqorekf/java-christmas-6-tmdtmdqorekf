@@ -24,6 +24,8 @@ public class Application {
         }
     }
     public static void main(String[] args) {
+        final int month = 12;
+
         // TODO: 우테코 식당 소개 출력
         System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
 
@@ -36,6 +38,10 @@ public class Application {
         System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1");
         String menuStr = Console.readLine();
 
+        // TODO: 우테코 식당 인트로 출력
+        System.out.println(month + "월 " + visitDate + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+
+        // TODO: 주문 메뉴 계산 및 출력
         List<String> menus = Arrays.asList(menuStr.split(","));
         List<Menu> menuList = menus.stream()
                 .map(menu -> menu.split("-"))
@@ -44,10 +50,6 @@ public class Application {
 
         System.out.println("<주문 메뉴>");
         menuList.forEach(menu -> System.out.println(menu.getFood() + " " + menu.getQuantity() + "개"));
-
-        // TODO: 우테코 식당 인트로 출력
-
-        // TODO: 주문 메뉴 출력
 
         // TODO: 할인 전 총주문 금액 계산 및 출력
 
