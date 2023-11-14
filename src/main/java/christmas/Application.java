@@ -66,7 +66,7 @@ public class Application {
         // TODO: 예상 방문 날짜 입력 받기
         System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
         String visitDateStr = Console.readLine();
-        int visitDate = Integer.parseInt(visitDateStr);
+        final int visitDate = Integer.parseInt(visitDateStr);
 
         // TODO: 주문 메뉴, 메뉴 개수 입력 받기
         System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1");
@@ -109,6 +109,16 @@ public class Application {
         }
 
         // TODO: 혜택 내역 계산 및 출력
+        // 크리스마스 디데이 할인 -> 1000원 시작, 25일까지 100원 증가
+
+
+        // 평일 할인 (일~목) -> 디저트 2023원 할인
+
+        // 주말 할인 (금,토) -> 메인 2023원 할인
+
+        // 특별 할인 (일, 25) -> 총주문에서 1000원 할인
+
+        System.out.println("\n<혜택 내역>");
 
         // TODO: 총혜택 금액 계산 및 출력
 
