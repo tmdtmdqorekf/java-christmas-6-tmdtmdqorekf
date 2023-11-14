@@ -70,12 +70,12 @@ public class Application {
 
         private final String weekName;
         private final String weekdayOrWeekend;
-        private final boolean starDay;
+        private final boolean isStarDay;
 
-        Week(String weekName, String weekdayOrWeekend, boolean starDay) {
+        Week(String weekName, String weekdayOrWeekend, boolean isStarDay) {
             this.weekName = weekName;
             this.weekdayOrWeekend = weekdayOrWeekend;
-            this.starDay = starDay;
+            this.isStarDay = isStarDay;
         }
     }
 
@@ -90,7 +90,7 @@ public class Application {
 
     private static Week getStarDay(boolean isStar) {
         for (Week day : Week.values()) {
-            if (day.starDay == isStar) {
+            if (day.isStarDay == isStar) {
                 return day;
             }
         }
@@ -141,10 +141,15 @@ public class Application {
         System.out.println(numberFormat.format(userOrderPrice) + "원");
 
         // TODO: 증정 메뉴 계산 및 출력
+        int champaignDiscount = 0;
+        boolean hasChampaignDiscount = false;
+
         System.out.println("\n<증정 메뉴>");
 
         if (userOrderPrice >= 120000) {
             System.out.println("샴페인 1개");
+            champaignDiscount = 25000;
+            hasChampaignDiscount = true;
         }
         else {
             System.out.println("없음");
@@ -198,18 +203,36 @@ public class Application {
         }
 
         // 특별 할인 (일, 25) -> 총주문에서 1000원 할인
+        int starDiscount = 0;
+        boolean hasStarDiscount = false;
+
+        if (weekdayOrWeekend.isStarDay) {
+            starDiscount = 1000;
+            userOrderPrice -= 1000;
+            hasStarDiscount = true;
+        }
+        else if (visitDate == 25) {
+            starDiscount = 1000;
+            userOrderPrice -= 1000;
+            hasStarDiscount = true;
+        }
 
         System.out.println("\n<혜택 내역>");
-        if (hasChristmasDiscount == true) {
+        if (hasChristmasDiscount) {
             System.out.println("크리스마스 디데이 할인: -" + numberFormat.format(christmasDiscount) + "원");
         }
-        if (hasWeekdayDiscount == true) {
+        if (hasWeekdayDiscount) {
             System.out.println("평일 할인: -" + numberFormat.format(weekdayDiscount) + "원");
         }
-        if (hasWeekendDiscount == true) {
+        if (hasWeekendDiscount) {
             System.out.println("주말 할인: -" + numberFormat.format(weekendDiscount) + "원");
         }
-        System.out.println("증정 이벤트: ");
+        if (hasStarDiscount) {
+            System.out.println("특별 할인: -" + numberFormat.format(starDiscount) + "원");
+        }
+        if (hasChampaignDiscount) {
+            System.out.println("증정 이벤트: -" + numberFormat.format(champaignDiscount) + "원");
+        }
 
         // TODO: 총혜택 금액 계산 및 출력
 
