@@ -58,27 +58,38 @@ public class Application {
     }
 
     public enum Week {
-        일요일("평일", true),
-        월요일("평일", false),
-        화요일("평일", false),
-        수요일("평일", false),
-        목요일("평일", false),
-        금요일("주말", false),
-        토요일("주말", false);
+        일요일(1, "평일", true),
+        월요일(2, "평일", false),
+        화요일(3, "평일", false),
+        수요일(4, "평일", false),
+        목요일(5, "평일", false),
+        금요일(6, "주말", false),
+        토요일(7, "주말", false);
 
+        private final int weekNum;
         private final String weekdayOrWeekend;
         private final boolean starDay;
 
-        Week(String weekdayOrWeekend, boolean starDay) {
+        Week(int weekNum, String weekdayOrWeekend, boolean starDay) {
+            this.weekNum = weekNum;
             this.weekdayOrWeekend = weekdayOrWeekend;
             this.starDay = starDay;
         }
     }
 
-    private static Week getWeek(boolean isStar) {
-        for (Week week : Week.values()) {
-            if (week.starDay == isStar) {
-                return week;
+    private static Week getWeekdayOrWeekend(String week) {
+        for (Week day : Week.values()) {
+            if (day.weekdayOrWeekend.equals(week)) {
+                return day;
+            }
+        }
+        return null;
+    }
+
+    private static Week getStarDay(boolean isStar) {
+        for (Week day : Week.values()) {
+            if (day.starDay == isStar) {
+                return day;
             }
         }
         return null;
@@ -140,20 +151,16 @@ public class Application {
         // TODO: 혜택 내역 계산 및 출력
         // 크리스마스 디데이 할인 -> 1000원 시작, 25일까지 100원 증가
         int christmasDiscount = 1000;
+        boolean hasChristmasDiscount = false;
 
         if (visitDate <= 25) {
             for (int i = 1; i < visitDate; i++) {
                 christmasDiscount += 100;
-            }
-        }
-        else if (visitDate > 25) {
-            for (int i = 1; i < 25; i++) {
-                christmasDiscount += 100;
+                hasChristmasDiscount = true;
             }
         }
 
         // 평일 할인 (일~목) -> 디저트 2023원 할인
-        String userOrderType;
 
         for (int i = 0; i<orderList.size(); i++) {
             Menu userOrder = getMenu(orderList.get(i).getFood());
@@ -165,7 +172,9 @@ public class Application {
         // 특별 할인 (일, 25) -> 총주문에서 1000원 할인
 
         System.out.println("\n<혜택 내역>");
-        System.out.println("크리스마스 디데이 할인: -" + numberFormat.format(christmasDiscount) + "원");
+        if (hasChristmasDiscount == true) {
+            System.out.println("크리스마스 디데이 할인: -" + numberFormat.format(christmasDiscount) + "원");
+        }
         System.out.println("평일 할인: -");
         System.out.println("주말 할인: -");
         System.out.println("증정 이벤트: ");
