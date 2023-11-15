@@ -100,8 +100,13 @@ public class OutputView {
 
     public static void printTotalDiscount(int userOrderPrice, int MONTH, int VISITDATE, List<Order> orderList) {
         System.out.println("\n<총혜택 금액>");
-        System.out.printf("-%s원\n", formatting(calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList)));
 
+        if (calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList) == 0) {
+            System.out.printf("%s원\n", formatting(calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList)));
+        }
+        else if (calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList) != 0) {
+            System.out.printf("-%s원\n", formatting(calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList)));
+        }
     }
 
     public static void printTotalPriceAfterDiscount(int userOrderPrice, int totalDiscount) {
@@ -112,14 +117,14 @@ public class OutputView {
 
     public static void printEventBadge(int totalDiscount) {
         System.out.println("\n<12월 이벤트 배지>");
-        if (totalDiscount >= 5000 && totalDiscount < 10000) {
+        if (totalDiscount < 5000) {
+            System.out.println("없음");
+        } else if (totalDiscount >= 5000 && totalDiscount < 10000) {
             System.out.println("별");
         } else if (totalDiscount >= 10000 && totalDiscount < 20000) {
             System.out.println("트리");
         } else if (totalDiscount >= 20000) {
             System.out.println("산타");
-        } else {
-            System.out.println("없음");
         }
     }
 }
