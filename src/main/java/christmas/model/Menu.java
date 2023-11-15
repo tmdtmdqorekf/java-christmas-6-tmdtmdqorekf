@@ -14,15 +14,15 @@ public enum Menu {
     레드와인("음료", 60_000),
     샴페인("음료", 25_000);
 
-    private final String type;
-    private final int price;
+    final String type;
+    final int price;
 
     Menu(String type, int price) {
         this.type = type;
         this.price = price;
     }
 
-    private static Menu getMenu(String menuName) {
+    static Menu getMenu(String menuName) {
         for (Menu menu : Menu.values()) {
             if (menu.name().equals(menuName)) {
                 return menu;

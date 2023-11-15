@@ -1,5 +1,6 @@
 package christmas.model;
 
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,5 +12,10 @@ public record Order(String food, int quantity) {
                 .map(order -> order.split("-"))
                 .map(o -> new Order(o[0], Integer.parseInt(o[1])))
                 .toList();
+    }
+
+    public static void formatting(int userOrderPrice) {
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        System.out.println(numberFormat.format(userOrderPrice) + "원");
     }
 }

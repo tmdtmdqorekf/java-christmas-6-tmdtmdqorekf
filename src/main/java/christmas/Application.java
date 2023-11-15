@@ -11,35 +11,6 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-//        // TODO: 할인 전 총주문 금액 계산 및 출력
-//        int userOrderPrice = 0;
-//        int eachPrice = 0;
-//
-//        for (int i = 0; i < orderList.size(); i++) {
-//            Menu userOrder = getMenu(orderList.get(i).getFood());
-//            eachPrice = (userOrder.price * orderList.get(i).getQuantity());
-//            userOrderPrice += eachPrice;
-//        }
-//
-//        NumberFormat numberFormat = NumberFormat.getInstance();
-//
-//        System.out.println("\n<할인 전 총주문 금액>");
-//        System.out.println(numberFormat.format(userOrderPrice) + "원");
-//
-//        // TODO: 증정 메뉴 계산 및 출력
-//        int champaignDiscount = 0;
-//        boolean hasChampaignDiscount = false;
-//
-//        System.out.println("\n<증정 메뉴>");
-//
-//        if (userOrderPrice >= 120000) {
-//            System.out.println("샴페인 1개");
-//            champaignDiscount = 25000;
-//            hasChampaignDiscount = true;
-//        } else {
-//            System.out.println("없음");
-//        }
-//
 //        // TODO: 혜택 내역 계산 및 출력
 //        // 크리스마스 디데이 할인 -> 1000원 시작, 25일까지 100원 증가
 //        int christmasDiscount = 1000;
