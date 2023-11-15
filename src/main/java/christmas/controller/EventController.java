@@ -20,8 +20,20 @@ public class EventController {
         final int VISITDATE = askVisitDate();
 
         printIntro(MONTH, VISITDATE);
+        List<Order> orderList;
 
-        final List<Order> orderList = getOrderList();
+        while (true) {
+            try {
+                orderList = getOrderList();
+
+                OrderValidator validator = new OrderValidator();
+                validator.validate(orderList);
+
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
         printOrder(orderList);
 
