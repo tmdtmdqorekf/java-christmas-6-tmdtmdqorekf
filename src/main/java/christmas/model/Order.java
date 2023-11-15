@@ -1,7 +1,5 @@
 package christmas.model;
 
-import christmas.validator.OrderValidator;
-import christmas.validator.VisitDateValidator;
 import java.util.Arrays;
 import java.util.List;
 
