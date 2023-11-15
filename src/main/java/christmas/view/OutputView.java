@@ -1,5 +1,8 @@
 package christmas.view;
 
+import christmas.model.Order;
+import java.util.List;
+
 public class OutputView {
     public static void printEventPlanner() {
         System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
@@ -9,8 +12,9 @@ public class OutputView {
         System.out.printf("%d월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!", MONTH, VISITDATE);
     }
 
-    public static void printOrder() {
+    public static void printOrder(List<Order> orderList) {
         System.out.println("<주문 메뉴>");
+        orderList.forEach(order -> System.out.println(order.food() + " " + order.quantity() + "개"));
     }
 
     public static void printTotalPriceBeforeDiscount() {

@@ -10,35 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Application {
-//    static class Order {
-//        private String food;
-//        private int quantity;
-//
-//        public Order(String food, int quantity) {
-//            this.food = food;
-//            this.quantity = quantity;
-//        }
-//
-//        public String getFood() {
-//            return food;
-//        }
-//
-//        public int getQuantity() {
-//            return quantity;
-//        }
-//    }
-
     public static void main(String[] args) {
-//        // TODO: 주문 메뉴 계산 및 출력
-//        List<String> orders = Arrays.asList(menuStr.split(","));
-//        List<Order> orderList = orders.stream()
-//                .map(order -> order.split("-"))
-//                .map(o -> new Order(o[0], Integer.parseInt(o[1])))
-//                .toList();
-//
-//        System.out.println("\n<주문 메뉴>");
-//        orderList.forEach(order -> System.out.println(order.getFood() + " " + order.getQuantity() + "개"));
-//
 //        // TODO: 할인 전 총주문 금액 계산 및 출력
 //        int userOrderPrice = 0;
 //        int eachPrice = 0;
