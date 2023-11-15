@@ -14,7 +14,7 @@ public class OutputView {
     }
 
     public static void printIntro() {
-        System.out.printf("%d월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!", month, visitDate);
+        System.out.printf("%d월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!", MONTH, VISITDATE);
     }
 
     public static void printOrder() {

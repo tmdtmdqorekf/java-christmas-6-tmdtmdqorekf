@@ -1,6 +1,8 @@
 package christmas;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.model.Menu;
+import christmas.model.Week;
 import java.text.NumberFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -27,7 +29,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        final int month = 12;
+        final int MONTH = 12;
 
         // TODO: 우테코 식당 소개 출력
         System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
@@ -35,14 +37,14 @@ public class Application {
         // TODO: 예상 방문 날짜 입력 받기
         System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
         String visitDateStr = Console.readLine();
-        final int visitDate = Integer.parseInt(visitDateStr);
+        final int VISITDATE = Integer.parseInt(visitDateStr);
 
         // TODO: 주문 메뉴, 메뉴 개수 입력 받기
         System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1");
         String menuStr = Console.readLine();
 
         // TODO: 우테코 식당 인트로 출력
-        System.out.println(month + "월 " + visitDate + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+        System.out.println(MONTH + "월 " + VISITDATE + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
 
         // TODO: 주문 메뉴 계산 및 출력
         List<String> orders = Arrays.asList(menuStr.split(","));
@@ -88,8 +90,8 @@ public class Application {
         int christmasDiscount = 1000;
         boolean hasChristmasDiscount = false;
 
-        if (visitDate <= 25) {
-            for (int i = 1; i < visitDate; i++) {
+        if (VISITDATE <= 25) {
+            for (int i = 1; i < VISITDATE; i++) {
                 christmasDiscount += 100;
                 hasChristmasDiscount = true;
             }
@@ -97,7 +99,7 @@ public class Application {
         }
 
         // 평일 할인 (일~목) -> 디저트 2023원 할인
-        LocalDate date = LocalDate.of(2023, month, visitDate);
+        LocalDate date = LocalDate.of(2023, MONTH, VISITDATE);
         DayOfWeek dayOfWeek = date.getDayOfWeek();
 
         Week weekdayOrWeekend = getWeekdayOrWeekend(dayOfWeek.name());
@@ -140,7 +142,7 @@ public class Application {
             userOrderPrice -= starDiscount;
             hasStarDiscount = true;
         }
-        if (visitDate == 25) {
+        if (VISITDATE == 25) {
             starDiscount = 1000;
             userOrderPrice -= starDiscount;
             hasStarDiscount = true;
