@@ -14,9 +14,11 @@ public class EventController {
 
     public void start() {
         printEventPlanner();
-        printIntro(MONTH, getVisitDate());
 
-        final List<Order> orderList = orderList(askOrder());
+        final int VISITDATE = askVisitDate();
+        printIntro(MONTH, VISITDATE);
+
+        final List<Order> orderList = getOrderList();
 
         printOrder(orderList);
 
@@ -24,7 +26,13 @@ public class EventController {
 
         printGift(getUserOrderPrice(orderList));
 
-        printDiscountList(getVisitDate());
+        printDiscountList(MONTH, VISITDATE, orderList);
+    }
+
+    private static List<Order> getOrderList() {
+        final List<Order> orderList;
+        orderList = orderList(askOrder());
+        return orderList;
     }
 
     private static int getUserOrderPrice(List<Order> orderList) {
