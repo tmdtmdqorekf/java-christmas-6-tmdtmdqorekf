@@ -29,13 +29,6 @@ public class Application {
 //    }
 
     public static void main(String[] args) {
-//        // TODO: 주문 메뉴, 메뉴 개수 입력 받기
-//        System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1");
-//        String menuStr = Console.readLine();
-//
-//        // TODO: 우테코 식당 인트로 출력
-//        System.out.println(MONTH + "월 " + VISITDATE + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
-//
 //        // TODO: 주문 메뉴 계산 및 출력
 //        List<String> orders = Arrays.asList(menuStr.split(","));
 //        List<Order> orderList = orders.stream()
