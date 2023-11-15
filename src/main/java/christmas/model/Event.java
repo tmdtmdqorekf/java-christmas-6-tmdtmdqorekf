@@ -2,23 +2,21 @@ package christmas.model;
 
 import static christmas.model.Menu.getMenu;
 import static christmas.model.Week.getWeek;
-import static christmas.model.Week.getWeekdayOrWeekend;
-
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.util.List;
 
 public class Event {
     public static String getChampaign(int userOrderPrice) {
         if (userOrderPrice >= 120000) {
-            champaignDiscount();
             return "샴페인 1개";
         }
         return "없음";
     }
 
-    public static void champaignDiscount() {
-        int champaignDiscount = 25000;
+    public static int getChampaignDiscount(int userOrderPrice) {
+        if (userOrderPrice >= 120000) {
+            return 250000;
+        }
+        return 0;
     }
 
     public static int getChristmasDiscount(int VISITDATE) {

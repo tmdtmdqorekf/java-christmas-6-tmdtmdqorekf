@@ -25,7 +25,7 @@ public class EventController {
 
         printGift(getUserOrderPrice(orderList));
 
-        printDiscountList(MONTH, VISITDATE, orderList);
+        printDiscountList(MONTH, VISITDATE, orderList, getUserOrderPrice(orderList));
     }
 
     private static List<Order> getOrderList() {
