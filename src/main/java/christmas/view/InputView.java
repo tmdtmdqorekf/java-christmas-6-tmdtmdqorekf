@@ -5,11 +5,22 @@ import christmas.validator.VisitDateValidator;
 
 public class InputView {
     public static int askVisitDate() {
-        System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
-        String visitDateStr = Console.readLine();
+        String visitDateStr;
 
-        VisitDateValidator validator = new VisitDateValidator();
-        validator.validate(visitDateStr);
+        while (true) {
+            try {
+                System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
+                visitDateStr = Console.readLine();
+
+                VisitDateValidator validator = new VisitDateValidator();
+                validator.validate(visitDateStr);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
         return Integer.parseInt(visitDateStr);
     }
