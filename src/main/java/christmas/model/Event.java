@@ -88,4 +88,17 @@ public class Event {
         }
         return 0;
     }
+
+    public static int calculateTotalDiscount(int userOrderPrice, int MONTH, int VISITDATE, List<Order> orderList) {
+        return plus(getChristmasDiscount(VISITDATE), getWeekdayDiscount(MONTH, VISITDATE, orderList),
+                getWeekendDiscount(MONTH, VISITDATE, orderList), getSpecialDiscount(MONTH, VISITDATE), getChampaignDiscount(userOrderPrice));
+    }
+
+    private static int plus(int... values) {
+        int sum = 0;
+        for (int value : values) {
+            sum += value;
+        }
+        return sum;
+    }
 }

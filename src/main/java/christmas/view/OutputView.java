@@ -3,6 +3,7 @@ package christmas.view;
 import static christmas.controller.EventController.formatting;
 import static christmas.controller.EventController.getUserOrderPrice;
 import static christmas.model.Customer.calculateUserOrderPrice;
+import static christmas.model.Event.calculateTotalDiscount;
 import static christmas.model.Event.getChampaign;
 import static christmas.model.Event.getChampaignDiscount;
 import static christmas.model.Event.getChristmasDiscount;
@@ -95,11 +96,13 @@ public class OutputView {
     }
 
     private static void printChampaignDiscount(int userOrderPrice) {
-        System.out.printf("\n증정 이벤트: -%s원", formatting(getChampaignDiscount(userOrderPrice)));
+        System.out.printf("\n증정 이벤트: -%s원\n", formatting(getChampaignDiscount(userOrderPrice)));
     }
 
-    public static void printTotalDiscount() {
+    public static void printTotalDiscount(int userOrderPrice, int MONTH, int VISITDATE, List<Order> orderList) {
         System.out.println("\n<총혜택 금액>");
+        System.out.printf("-%s원", formatting(calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList)));
+
     }
 
     public static void printTotalPriceAfterDiscount() {
