@@ -1,8 +1,10 @@
 package christmas.view;
 
+import static christmas.controller.EventController.formatting;
 import static christmas.model.Customer.getUserOrderPrice;
 import static christmas.model.Event.getChampaign;
 import static christmas.model.Event.getChristmasDiscount;
+import static christmas.model.Event.getWeekdayDiscount;
 
 import christmas.model.Order;
 import java.util.List;
@@ -36,10 +38,10 @@ public class OutputView {
         System.out.println(getChampaign(userOrderPrice));
     }
 
-    public static void printDiscountList(int VISITDATE) {
+    public static void printDiscountList(int MONTH, int VISITDATE, List<Order> orderList) {
         System.out.println("\n<혜택 내역>");
         printChristmasDiscount(VISITDATE);
-        printWeekdayDiscount();
+        printWeekdayDiscount(MONTH, VISITDATE, orderList);
         printWeekendDiscount();
         printSpecialDiscount();
         printGiftDiscount();
@@ -47,24 +49,23 @@ public class OutputView {
     }
 
     private static void printChristmasDiscount(int VISITDATE) {
-        System.out.println("크리스마스 디데이 할인: ");
-        getChristmasDiscount(VISITDATE);
+        System.out.printf("크리스마스 디데이 할인: -%s원", formatting(getChristmasDiscount(VISITDATE)));
     }
 
-    private static void printWeekdayDiscount() {
-        System.out.println("평일 할인: ");
+    private static void printWeekdayDiscount(int MONTH, int VISITDATE, List<Order> orderList) {
+        System.out.printf("\n평일 할인: -%s원", formatting(getWeekdayDiscount(MONTH, VISITDATE, orderList)));
     }
 
     private static void printWeekendDiscount() {
-        System.out.println("주말 할인: ");
+        System.out.printf("\n주말 할인: -%s원", );
     }
 
     private static void printSpecialDiscount() {
-        System.out.println("특별 할인: ");
+        System.out.printf("\n특별 할인: -%s원", );
     }
 
     private static void printGiftDiscount() {
-        System.out.println("증정 이벤트: ");
+        System.out.printf("\n증정 이벤트: -%s원", );
     }
 
     public static void printTotalDiscount() {

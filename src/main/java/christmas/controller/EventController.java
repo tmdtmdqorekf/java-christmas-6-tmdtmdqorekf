@@ -2,7 +2,6 @@ package christmas.controller;
 
 import static christmas.view.InputView.*;
 import static christmas.view.OutputView.*;
-import static christmas.model.Customer.*;
 import static christmas.model.Order.*;
 
 import christmas.model.Order;
@@ -39,5 +38,10 @@ public class EventController {
         final int userOrderPrice;
         userOrderPrice = printTotalPriceBeforeDiscount(orderList);
         return userOrderPrice;
+    }
+
+    public static String formatting(int price) {
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        return numberFormat.format(price);
     }
 }

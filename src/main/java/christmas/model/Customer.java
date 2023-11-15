@@ -6,11 +6,6 @@ import static christmas.view.InputView.askVisitDate;
 import java.util.List;
 
 public class Customer {
-    public static int getVisitDate() {
-        final int VISITDATE = askVisitDate();
-        return VISITDATE;
-    }
-
     public static int getUserOrderPrice(List<Order> orderList) {
         int userOrderPrice = 0;
 

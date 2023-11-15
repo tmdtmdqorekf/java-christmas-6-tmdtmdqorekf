@@ -1,37 +1,10 @@
 package christmas;
 
 import christmas.controller.EventController;
-import christmas.model.Menu;
-import christmas.model.Week;
-import java.text.NumberFormat;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
 //        // TODO: 혜택 내역 계산 및 출력
-//        // 평일 할인 (일~목) -> 디저트 2023원 할인
-//        LocalDate date = LocalDate.of(2023, MONTH, VISITDATE);
-//        DayOfWeek dayOfWeek = date.getDayOfWeek();
-//
-//        Week weekdayOrWeekend = getWeekdayOrWeekend(dayOfWeek.name());
-//
-//        int weekdayDiscount = 0;
-//        boolean hasWeekdayDiscount = false;
-//
-//        if (weekdayOrWeekend.weekdayOrWeekend.equals("평일")) {
-//            for (Order order : orderList) {
-//                Menu userOrder = getMenu(order.getFood());
-//                if ("디저트".equals(userOrder.type)) {
-//                    weekdayDiscount = 2023 * order.getQuantity();
-//                    userOrderPrice -= weekdayDiscount;
-//                    hasWeekdayDiscount = true;
-//                }
-//            }
-//        }
-//
 //        // 주말 할인 (금,토) -> 메인 2023원 할인
 //        int weekendDiscount = 0;
 //        boolean hasWeekendDiscount = false;

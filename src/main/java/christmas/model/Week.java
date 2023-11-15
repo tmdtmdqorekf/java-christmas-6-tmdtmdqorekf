@@ -10,7 +10,7 @@ public enum Week {
     토("SATURDAY", "주말", false);
 
     private final String weekName;
-    private final String weekdayOrWeekend;
+    final String weekdayOrWeekend;
     private final boolean isStarDay;
 
     Week(String weekName, String weekdayOrWeekend, boolean isStarDay) {
@@ -19,7 +19,7 @@ public enum Week {
         this.isStarDay = isStarDay;
     }
 
-    private static Week getWeekdayOrWeekend(String dayOfWeek) {
+    static Week getWeekdayOrWeekend(String dayOfWeek) {
         for (Week day : Week.values()) {
             if (day.weekName.equals(dayOfWeek)) {
                 return day;
