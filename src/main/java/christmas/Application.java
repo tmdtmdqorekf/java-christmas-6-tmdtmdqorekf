@@ -12,18 +12,6 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 //        // TODO: 혜택 내역 계산 및 출력
-//        // 크리스마스 디데이 할인 -> 1000원 시작, 25일까지 100원 증가
-//        int christmasDiscount = 1000;
-//        boolean hasChristmasDiscount = false;
-//
-//        if (VISITDATE <= 25) {
-//            for (int i = 1; i < VISITDATE; i++) {
-//                christmasDiscount += 100;
-//                hasChristmasDiscount = true;
-//            }
-//            userOrderPrice -= christmasDiscount;
-//        }
-//
 //        // 평일 할인 (일~목) -> 디저트 2023원 할인
 //        LocalDate date = LocalDate.of(2023, MONTH, VISITDATE);
 //        DayOfWeek dayOfWeek = date.getDayOfWeek();

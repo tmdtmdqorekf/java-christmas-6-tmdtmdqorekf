@@ -20,12 +20,16 @@ public class EventController {
 
         printOrder(orderList);
 
-        final int userOrderPrice = printTotalPriceBeforeDiscount(orderList);
+        formatting(getUserOrderPrice(orderList));
 
-        formatting(userOrderPrice);
+        printGift(getUserOrderPrice(orderList));
 
-        printGift(userOrderPrice);
+        printDiscountList(getVisitDate());
+    }
 
-
+    private static int getUserOrderPrice(List<Order> orderList) {
+        final int userOrderPrice;
+        userOrderPrice = printTotalPriceBeforeDiscount(orderList);
+        return userOrderPrice;
     }
 }
