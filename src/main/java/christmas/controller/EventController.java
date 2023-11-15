@@ -20,8 +20,8 @@ public class EventController {
         final int VISITDATE = askVisitDate();
 
         printIntro(MONTH, VISITDATE);
-        List<Order> orderList;
 
+        List<Order> orderList;
         while (true) {
             try {
                 orderList = getOrderList();
