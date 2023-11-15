@@ -1,6 +1,7 @@
 package christmas.model;
 
 import static christmas.model.Menu.getMenu;
+import static christmas.model.Week.getWeek;
 import static christmas.model.Week.getWeekdayOrWeekend;
 
 import java.time.DayOfWeek;
@@ -39,19 +40,16 @@ public class Event {
     }
 
     public static int getWeekdayDiscount(int MONTH, int VISITDATE, List<Order> orderList) {
-        return getDiscount(MONTH, VISITDATE, orderList, "평일", Event::calculateIfDessert);
+        Week week = getWeek(MONTH, VISITDATE);
+        return getDiscount(week, orderList, "평일", Event::calculateIfDessert);
     }
 
     public static int getWeekendDiscount(int MONTH, int VISITDATE, List<Order> orderList) {
-        return getDiscount(MONTH, VISITDATE, orderList, "주말", Event::calculateIfMain);
+        Week week = getWeek(MONTH, VISITDATE);
+        return getDiscount(week, orderList, "주말", Event::calculateIfMain);
     }
 
-    private static int getDiscount(int MONTH, int VISITDATE, List<Order> orderList, String dayType, DiscountCalculator calculator) {
-        LocalDate date = LocalDate.of(2023, MONTH, VISITDATE);
-        DayOfWeek dayOfWeek = date.getDayOfWeek();
-
-        Week week = getWeekdayOrWeekend(dayOfWeek.name());
-
+    private static int getDiscount(Week week, List<Order> orderList, String dayType, DiscountCalculator calculator) {
         if (week.weekdayOrWeekend.equals(dayType)) {
             int discount = 0;
             for (Order order : orderList) {
@@ -82,4 +80,14 @@ public class Event {
         int calculate(Order order, Menu userOrder);
     }
 
+    public static int getSpecialDiscount(int MONTH, int VISITDATE) {
+        Week week = getWeek(MONTH, VISITDATE);
+        if (week.weekName.equals("SUNDAY")) {
+            return 1000;
+        }
+        if (VISITDATE == 25) {
+            return 1000;
+        }
+        return 0;
+    }
 }

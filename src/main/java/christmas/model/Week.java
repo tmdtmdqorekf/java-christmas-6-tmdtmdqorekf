@@ -1,22 +1,23 @@
 package christmas.model;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+
 public enum Week {
-    일("SUNDAY", "평일", true),
-    월("MONDAY", "평일", false),
-    화("TUESDAY", "평일", false),
-    수("WEDNESDAY", "평일", false),
-    목("THURSDAY", "평일", false),
-    금("FRIDAY", "주말", false),
-    토("SATURDAY", "주말", false);
+    일("SUNDAY", "평일"),
+    월("MONDAY", "평일"),
+    화("TUESDAY", "평일"),
+    수("WEDNESDAY", "평일"),
+    목("THURSDAY", "평일"),
+    금("FRIDAY", "주말"),
+    토("SATURDAY", "주말");
 
-    private final String weekName;
+    final String weekName;
     final String weekdayOrWeekend;
-    private final boolean isStarDay;
 
-    Week(String weekName, String weekdayOrWeekend, boolean isStarDay) {
+    Week(String weekName, String weekdayOrWeekend) {
         this.weekName = weekName;
         this.weekdayOrWeekend = weekdayOrWeekend;
-        this.isStarDay = isStarDay;
     }
 
     static Week getWeekdayOrWeekend(String dayOfWeek) {
@@ -26,5 +27,12 @@ public enum Week {
             }
         }
         return null;
+    }
+
+    static Week getWeek(int MONTH, int VISITDATE) {
+        LocalDate date = LocalDate.of(2023, MONTH, VISITDATE);
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
+
+        return getWeekdayOrWeekend(dayOfWeek.name());
     }
 }

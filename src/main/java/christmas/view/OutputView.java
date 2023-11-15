@@ -4,6 +4,7 @@ import static christmas.controller.EventController.formatting;
 import static christmas.model.Customer.getUserOrderPrice;
 import static christmas.model.Event.getChampaign;
 import static christmas.model.Event.getChristmasDiscount;
+import static christmas.model.Event.getSpecialDiscount;
 import static christmas.model.Event.getWeekdayDiscount;
 import static christmas.model.Event.getWeekendDiscount;
 
@@ -44,7 +45,7 @@ public class OutputView {
         printChristmasDiscount(VISITDATE);
         printWeekdayDiscount(MONTH, VISITDATE, orderList);
         printWeekendDiscount(MONTH, VISITDATE, orderList);
-        printSpecialDiscount();
+        printSpecialDiscount(MONTH, VISITDATE);
         printGiftDiscount();
 
     }
@@ -61,8 +62,8 @@ public class OutputView {
         System.out.printf("\n주말 할인: -%s원", formatting(getWeekendDiscount(MONTH, VISITDATE, orderList)));
     }
 
-    private static void printSpecialDiscount() {
-        System.out.printf("\n특별 할인: -%s원", "a");
+    private static void printSpecialDiscount(int MONTH, int VISITDATE) {
+        System.out.printf("\n특별 할인: -%s원", formatting(getSpecialDiscount(MONTH, VISITDATE)));
     }
 
     private static void printGiftDiscount() {

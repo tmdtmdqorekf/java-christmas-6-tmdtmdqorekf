@@ -4,22 +4,6 @@ import christmas.controller.EventController;
 
 public class Application {
     public static void main(String[] args) {
-//        // TODO: 혜택 내역 계산 및 출력
-//        // 특별 할인 (일, 25) -> 총주문에서 1000원 할인
-//        int starDiscount = 0;
-//        boolean hasStarDiscount = false;
-//
-//        if (weekdayOrWeekend.isStarDay) {
-//            starDiscount = 1000;
-//            userOrderPrice -= starDiscount;
-//            hasStarDiscount = true;
-//        }
-//        if (VISITDATE == 25) {
-//            starDiscount = 1000;
-//            userOrderPrice -= starDiscount;
-//            hasStarDiscount = true;
-//        }
-//
 //        int totalDiscount = 0;
 //
 //        System.out.println("\n<혜택 내역>");
