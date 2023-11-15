@@ -5,21 +5,6 @@ import christmas.controller.EventController;
 public class Application {
     public static void main(String[] args) {
 //        // TODO: 혜택 내역 계산 및 출력
-//        // 주말 할인 (금,토) -> 메인 2023원 할인
-//        int weekendDiscount = 0;
-//        boolean hasWeekendDiscount = false;
-//
-//        if (weekdayOrWeekend.weekdayOrWeekend.equals("주말")) {
-//            for (Order order : orderList) {
-//                Menu userOrder = getMenu(order.getFood());
-//                if ("메인".equals(userOrder.type)) {
-//                    weekendDiscount = 2023 * order.getQuantity();
-//                    userOrderPrice -= weekendDiscount;
-//                    hasWeekendDiscount = true;
-//                }
-//            }
-//        }
-//
 //        // 특별 할인 (일, 25) -> 총주문에서 1000원 할인
 //        int starDiscount = 0;
 //        boolean hasStarDiscount = false;

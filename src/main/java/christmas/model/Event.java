@@ -39,29 +39,56 @@ public class Event {
     }
 
     public static int getWeekdayDiscount(int MONTH, int VISITDATE, List<Order> orderList) {
-        // 평일 할인 (일~목) -> 디저트 2023원 할인
         LocalDate date = LocalDate.of(2023, MONTH, VISITDATE);
         DayOfWeek dayOfWeek = date.getDayOfWeek();
 
         Week week = getWeekdayOrWeekend(dayOfWeek.name());
 
         if (week.weekdayOrWeekend.equals("평일")) {
-            return calculateIfWeekday(orderList);
+            int weekdayDiscount = 0;
+            return calculateIfWeekday(orderList, weekdayDiscount);
         }
         return 0;
     }
 
-    private static int calculateIfWeekday(List<Order> orderList) {
-        int weekdayDiscount = 0;
+    public static int getWeekendDiscount(int MONTH, int VISITDATE, List<Order> orderList) {
+        LocalDate date = LocalDate.of(2023, MONTH, VISITDATE);
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
+
+        Week week = getWeekdayOrWeekend(dayOfWeek.name());
+
+        if (week.weekdayOrWeekend.equals("주말")) {
+            int weekendDiscount = 0;
+            return calculateIfWeekend(orderList, weekendDiscount);
+        }
+        return 0;
+    }
+
+    private static int calculateIfWeekday(List<Order> orderList, int weekdayDiscount) {
         for (Order order : orderList) {
             Menu userOrder = getMenu(order.food());
-            weekdayDiscount += calculateIfDessert(order, userOrder, weekdayDiscount);
+            weekdayDiscount += calculateIfDessert(order, userOrder);
         }
         return weekdayDiscount;
     }
 
-    private static int calculateIfDessert(Order order, Menu userOrder, int weekdayDiscount) {
+    private static int calculateIfWeekend(List<Order> orderList, int weekendDiscount) {
+        for (Order order : orderList) {
+            Menu userOrder = getMenu(order.food());
+            weekendDiscount += calculateIfMain(order, userOrder);
+        }
+        return weekendDiscount;
+    }
+
+    private static int calculateIfDessert(Order order, Menu userOrder) {
         if ("디저트".equals(userOrder.type)) {
+            return 2023 * order.quantity();
+        }
+        return 0;
+    }
+
+    private static int calculateIfMain(Order order, Menu userOrder) {
+        if ("메인".equals(userOrder.type)) {
             return 2023 * order.quantity();
         }
         return 0;
