@@ -14,11 +14,16 @@ public class OutputView {
 
     public static void printOrder(List<Order> orderList) {
         System.out.println("\n<주문 메뉴>");
+        printEachOrder(orderList);
+    }
+
+    private static void printEachOrder(List<Order> orderList) {
         orderList.forEach(order -> System.out.println(order.food() + " " + order.quantity() + "개"));
     }
 
-    public static void printTotalPriceBeforeDiscount() {
+    public static void printTotalPriceBeforeDiscount(List<Order> orderList) {
         System.out.println("\n<할인 전 총주문 금액>");
+
     }
 
     public static void printGift() {
