@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import static christmas.model.Customer.calculateUserOrderPrice;
 import static christmas.view.InputView.*;
 import static christmas.view.OutputView.*;
 import static christmas.model.Order.*;
@@ -21,7 +22,7 @@ public class EventController {
 
         printOrder(orderList);
 
-        formatting(getUserOrderPrice(orderList));
+        printTotalPriceBeforeDiscount(orderList);
 
         printGift(getUserOrderPrice(orderList));
 
@@ -34,14 +35,14 @@ public class EventController {
         return orderList;
     }
 
-    private static int getUserOrderPrice(List<Order> orderList) {
-        final int userOrderPrice;
-        userOrderPrice = printTotalPriceBeforeDiscount(orderList);
-        return userOrderPrice;
-    }
-
     public static String formatting(int price) {
         NumberFormat numberFormat = NumberFormat.getInstance();
         return numberFormat.format(price);
+    }
+
+    public static int getUserOrderPrice(List<Order> orderList) {
+        final int userOrderPrice;
+        userOrderPrice = calculateUserOrderPrice(orderList);
+        return userOrderPrice;
     }
 }

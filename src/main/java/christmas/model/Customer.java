@@ -1,12 +1,9 @@
 package christmas.model;
 
-import static christmas.model.Menu.getMenu;
-import static christmas.view.InputView.askVisitDate;
-
 import java.util.List;
 
 public class Customer {
-    public static int getUserOrderPrice(List<Order> orderList) {
+    public static int calculateUserOrderPrice(List<Order> orderList) {
         int userOrderPrice = 0;
 
         for (Order order : orderList) {

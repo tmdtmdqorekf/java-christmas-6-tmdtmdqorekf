@@ -14,7 +14,7 @@ public class Event {
 
     public static int getChampaignDiscount(int userOrderPrice) {
         if (userOrderPrice >= 120000) {
-            return 250000;
+            return 25000;
         }
         return 0;
     }

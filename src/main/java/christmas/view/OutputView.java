@@ -1,7 +1,8 @@
 package christmas.view;
 
 import static christmas.controller.EventController.formatting;
-import static christmas.model.Customer.getUserOrderPrice;
+import static christmas.controller.EventController.getUserOrderPrice;
+import static christmas.model.Customer.calculateUserOrderPrice;
 import static christmas.model.Event.getChampaign;
 import static christmas.model.Event.getChampaignDiscount;
 import static christmas.model.Event.getChristmasDiscount;
@@ -30,10 +31,9 @@ public class OutputView {
         orderList.forEach(order -> System.out.println(order.food() + " " + order.quantity() + "개"));
     }
 
-    public static int printTotalPriceBeforeDiscount(List<Order> orderList) {
+    public static void printTotalPriceBeforeDiscount(List<Order> orderList) {
         System.out.println("\n<할인 전 총주문 금액>");
-
-        return getUserOrderPrice(orderList);
+        System.out.printf("%s원\n", formatting(getUserOrderPrice(orderList)));
     }
 
     public static void printGift(int userOrderPrice) {
