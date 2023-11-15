@@ -2,7 +2,7 @@ package christmas.view;
 
 import static christmas.controller.EventController.formatting;
 import static christmas.controller.EventController.getUserOrderPrice;
-import static christmas.model.Customer.calculateUserOrderPrice;
+import static christmas.model.Customer.calculateTotalPriceAfterDiscount;
 import static christmas.model.Event.calculateTotalDiscount;
 import static christmas.model.Event.getChampaign;
 import static christmas.model.Event.getChampaignDiscount;
@@ -101,15 +101,29 @@ public class OutputView {
 
     public static void printTotalDiscount(int userOrderPrice, int MONTH, int VISITDATE, List<Order> orderList) {
         System.out.println("\n<총혜택 금액>");
-        System.out.printf("-%s원", formatting(calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList)));
+        System.out.printf("-%s원\n", formatting(calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList)));
 
     }
 
-    public static void printTotalPriceAfterDiscount() {
+    public static void printTotalPriceAfterDiscount(int userOrderPrice, int totalDiscount) {
         System.out.println("\n<할인 후 예상 결제 금액>");
+        System.out.printf("%s원\n", formatting(calculateTotalPriceAfterDiscount(userOrderPrice, totalDiscount)));
+
     }
 
-    public static void printEventBadge() {
+    public static void printEventBadge(int totalDiscount) {
         System.out.println("\n<12월 이벤트 배지>");
+        if (totalDiscount >= 5000 && totalDiscount < 10000) {
+            System.out.println("별");
+        }
+        else if (totalDiscount >= 10000 && totalDiscount < 20000) {
+            System.out.println("트리");
+        }
+        else if (totalDiscount >= 20000) {
+            System.out.println("산타");
+        }
+        else {
+            System.out.println("없음");
+        }
     }
 }

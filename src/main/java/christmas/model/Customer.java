@@ -1,5 +1,7 @@
 package christmas.model;
 
+import static christmas.model.Event.getChampaignDiscount;
+
 import java.util.List;
 
 public class Customer {
@@ -15,5 +17,12 @@ public class Customer {
 
     private static int getEachPrice(Order order, Menu userOrder) {
         return userOrder.price * order.quantity();
+    }
+
+    public static int calculateTotalPriceAfterDiscount(int userOrderPrice, int totalDiscount) {
+        if (getChampaignDiscount(userOrderPrice) != 0) {
+            return userOrderPrice - totalDiscount + 25000;
+        }
+        return userOrderPrice - totalDiscount;
     }
 }
