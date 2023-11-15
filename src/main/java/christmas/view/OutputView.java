@@ -104,7 +104,7 @@ public class OutputView {
         if (calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList) == 0) {
             System.out.printf("%s원\n", formatting(calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList)));
         }
-        else if (calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList) != 0) {
+        if (calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList) != 0) {
             System.out.printf("-%s원\n", formatting(calculateTotalDiscount(userOrderPrice, MONTH, VISITDATE, orderList)));
         }
     }
