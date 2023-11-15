@@ -5,6 +5,7 @@ public class VisitDateValidator implements BasicValidator<String> {
     public void validate(String input) {
         isInputEmpty(input);
         isRangeValid(input);
+        isNumber(input);
 
     }
 
@@ -18,6 +19,14 @@ public class VisitDateValidator implements BasicValidator<String> {
         int number = Integer.parseInt(input);
         if (number < 1 || number > 31) {
                 throw new IllegalArgumentException("유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        }
+    }
+
+    public void isNumber(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            System.out.println("유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
     }
 }
