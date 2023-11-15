@@ -1,6 +1,5 @@
 package christmas.model;
 
-import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.List;
 

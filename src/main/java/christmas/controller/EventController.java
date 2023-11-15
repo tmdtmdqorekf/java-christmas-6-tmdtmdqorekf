@@ -7,6 +7,7 @@ import static christmas.view.OutputView.*;
 import static christmas.model.Order.*;
 
 import christmas.model.Order;
+import christmas.validator.OrderValidator;
 import java.text.NumberFormat;
 import java.util.List;
 
@@ -46,6 +47,10 @@ public class EventController {
     private static List<Order> getOrderList() {
         final List<Order> orderList;
         orderList = orderList(askOrder());
+
+        OrderValidator validator = new OrderValidator();
+        validator.validate(orderList);
+
         return orderList;
     }
 
