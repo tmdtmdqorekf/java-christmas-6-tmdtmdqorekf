@@ -8,11 +8,10 @@ public record Order(String food, int quantity) {
         List<String> orders = Arrays.asList(orderStr.split(","));
 
         try {
-            List<Order> order = orders.stream()
+            return orders.stream()
                     .map(order1 -> order1.split("-"))
                     .map(o -> new Order(o[0], Integer.parseInt(o[1])))
                     .toList();
-            return order;
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
             throw new NumberFormatException();
