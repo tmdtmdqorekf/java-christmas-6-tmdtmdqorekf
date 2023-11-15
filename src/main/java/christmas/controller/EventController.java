@@ -32,7 +32,8 @@ public class EventController {
 
         printTotalDiscount(getUserOrderPrice(orderList), MONTH, VISITDATE, orderList);
 
-        printTotalPriceAfterDiscount(getUserOrderPrice(orderList), getTotalDiscount(getUserOrderPrice(orderList), MONTH, VISITDATE, orderList));
+        printTotalPriceAfterDiscount(getUserOrderPrice(orderList),
+                getTotalDiscount(getUserOrderPrice(orderList), MONTH, VISITDATE, orderList));
 
         printEventBadge(getTotalDiscount(getUserOrderPrice(orderList), MONTH, VISITDATE, orderList));
     }

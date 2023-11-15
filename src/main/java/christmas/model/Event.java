@@ -2,6 +2,7 @@ package christmas.model;
 
 import static christmas.model.Menu.getMenu;
 import static christmas.model.Week.getWeek;
+
 import java.util.List;
 
 public class Event {
@@ -91,7 +92,8 @@ public class Event {
 
     public static int calculateTotalDiscount(int userOrderPrice, int MONTH, int VISITDATE, List<Order> orderList) {
         return plus(getChristmasDiscount(VISITDATE), getWeekdayDiscount(MONTH, VISITDATE, orderList),
-                getWeekendDiscount(MONTH, VISITDATE, orderList), getSpecialDiscount(MONTH, VISITDATE), getChampaignDiscount(userOrderPrice));
+                getWeekendDiscount(MONTH, VISITDATE, orderList), getSpecialDiscount(MONTH, VISITDATE),
+                getChampaignDiscount(userOrderPrice));
     }
 
     private static int plus(int... values) {

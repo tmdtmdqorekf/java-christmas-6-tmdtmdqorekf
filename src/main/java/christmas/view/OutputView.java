@@ -46,8 +46,7 @@ public class OutputView {
         System.out.println("\n<혜택 내역>");
         if (isZero(MONTH, VISITDATE, orderList, userOrderPrice)) {
             System.out.println("없음");
-        }
-        else if (!isZero(MONTH, VISITDATE, orderList, userOrderPrice)) {
+        } else if (!isZero(MONTH, VISITDATE, orderList, userOrderPrice)) {
             isNotZero(MONTH, VISITDATE, orderList, userOrderPrice);
         }
     }
@@ -115,14 +114,11 @@ public class OutputView {
         System.out.println("\n<12월 이벤트 배지>");
         if (totalDiscount >= 5000 && totalDiscount < 10000) {
             System.out.println("별");
-        }
-        else if (totalDiscount >= 10000 && totalDiscount < 20000) {
+        } else if (totalDiscount >= 10000 && totalDiscount < 20000) {
             System.out.println("트리");
-        }
-        else if (totalDiscount >= 20000) {
+        } else if (totalDiscount >= 20000) {
             System.out.println("산타");
-        }
-        else {
+        } else {
             System.out.println("없음");
         }
     }
